@@ -1,0 +1,10 @@
+# playframework
+tmp
+test-result
+out
+logs
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
