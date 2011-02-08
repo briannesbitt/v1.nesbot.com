@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <title>#{if title}#{get 'title' /} -- #{/if} Brian Nesbitt : nesbot.com</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta name="keywords" content="" />
+   <meta name="description" content="" />
+   <link rel="shortcut icon" type="image/png" href="${urlimages}fav.png">
+   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css">
+   #{gatracker gatracker/}
+</head>
+<body>
+
+<div id="icons">
+   <a href="http://twitter.com/NesbittBrian"><img src="${urlimages}twitter.png" width="40" height="40" /></a>
+</div>
+
+<div id="header">
+   <h1><a href="@{Application.index}"><span>Consuming</span>Knowledge</a></h1>
+</div>
+
+<div id="page">
+   #{menu /}
+
+   <div id="content">
+      #{doLayout /}
+   </div>
+</div>
+
+</body>
+</html>

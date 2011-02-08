@@ -10,9 +10,9 @@
             #{404 result /}
         #{/if}
         #{else}
-            <h1>Not found</h1>
+            <h1>Oops, that page was not found.</h1>
             <p>
-                ${result.message}
+                <a href="@{Application.index}">Back home</a>
             </p>
         #{/else}
     </body>
