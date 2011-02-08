@@ -1,0 +1,3 @@
+h1. nesbot.com
+
+I am making the source of my personal site developed using the "playframework":http://playframework.org incase it helps anyway.  At this point its so simple it probably won't, but hopefully it will in the future.
