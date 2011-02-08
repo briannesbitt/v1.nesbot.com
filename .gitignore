@@ -3,6 +3,8 @@ tmp
 test-result
 out
 logs
+server.pid
+
 # IntelliJ
 *.iml
 *.ipr
