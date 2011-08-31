@@ -4,6 +4,7 @@ test-result
 out
 logs
 server.pid
+*.ser
 
 # IntelliJ
 *.iml
