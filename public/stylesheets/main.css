@@ -19,7 +19,7 @@ a:hover {text-decoration:underline;}
 #header h1 a span {color:#999;}
 #header h2 {font-weight: bold; font-style:italic; font-size: 1.1em; color:#FF3000; position:relative; top:-5px; left: 5px;letter-spacing:1px;}
 
-#icons {position:absolute;top:18px;right:85px;}
+#icons {position:absolute;top:28px;left:740px;}
 #icons img {padding-left:5px;}
 
 /* Page */
