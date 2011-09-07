@@ -39,8 +39,11 @@ a:hover {text-decoration:underline;}
 #menu #links li {border-bottom:1px dotted #E7E2DC; text-align:right;}
 #menu #links li a {padding-right:10px; background:url(/images/arrow.jpg) no-repeat right 6px;}
 
-#menu #powered {text-align:right;padding-right:5px;}
+#menu #powered {text-align:right;padding-right:5px;padding-bottom:40px;}
 #menu #powered img {padding-left:4px;}
+#menu #powered a {text-decoration:none;}
+#menu #powered a:hover .u {text-decoration:underline;}
+
 
 /* Content */
 #content {margin-left:290px; width:70%;}
