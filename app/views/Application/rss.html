@@ -2,25 +2,25 @@
 
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-   <title><![CDATA[Brian Nesbitt's  Blog]]></title>
-   <link><![CDATA[http://nesbot.com]]></link>
-   <description><![CDATA[Developer who is always consuming knowledge. Startup enthusiast who doesn't enjoy being a drop in a bucket. Dividend stock investor. Lucky husband and father.]]></description>
+   <title>Brian Nesbitt's  Blog</title>
+   <link>http://nesbot.com</link>
+   <description>Developer who is always consuming knowledge. Startup enthusiast who doesn't enjoy being a drop in a bucket. Dividend stock investor. Lucky husband and father.</description>
    <language>en-us</language>
-   <managingEditor><![CDATA[brian@nesbot.com]]></managingEditor>
+   <managingEditor>brian@nesbot.com</managingEditor>
    <image>
 	   <url>http://nesbot.com/images/logo.gif</url>
-	   <title><![CDATA[Brian Nesbitt's  Blog]]></title>
-	   <link><![CDATA[http://nesbot.com]]></link>
+	   <title>Brian Nesbitt's  Blog</title>
+	   <link>http://nesbot.com</link>
    </image>
-   <atom:link href="@@{Application.rss}" rel="self" type="application/rss+xml" />
+   <atom:link href="${urlbase}rss" rel="self" type="application/rss+xml" />
 
    #{list posts, as:'post'}
    <item>
-      <title><![CDATA[${post.title}]]></title>
-      <link><![CDATA[@@{Application.show(post.date.format("yyyy"), post.date.format("MMM"), post.date.format("d"), post.slug)}]]></link>
-      <author><![CDATA[brian@nesbot.com]]></author>
+      <title>${post.title}</title>
+      <link>${urlbase}${post.date.format("yyyy")}/${post.date.format("MMM")}/${post.date.format("d")}/${post.slug}</link>
+      <author>brian@nesbot.com</author>
       <pubDate>${post.date.format("EEE, dd MMM yyyy 09:mm:ss Z")}</pubDate>
-      <guid><![CDATA[@@{Application.show(post.date.format("yyyy"), post.date.format("MM"), post.date.format("d"), post.slug)}]]></guid>
+      <guid>${urlbase}${post.date.format("yyyy")}/${post.date.format("MMM")}/${post.date.format("d")}/${post.slug}</guid>
       <description><![CDATA[#{include controllers.Application.postTagName(post) /}]]></description>
    </item>
    #{/list}

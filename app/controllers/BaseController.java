@@ -9,6 +9,7 @@ public class BaseController extends Controller
    @Before
    public static void defaultVars()
    {
+      renderArgs.put("urlbase", Globals.getUrlBase());
       renderArgs.put("urlcdn", Globals.getUrlCdn());
       renderArgs.put("urlimages", Globals.getUrlImages());
       renderArgs.put("gatracker", Globals.getGoogleAnalyticsTracker());
