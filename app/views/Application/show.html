@@ -6,7 +6,7 @@
    <h1>${post.title}</h1>
    <div class="date">${post.date.format('MMMM d, yyyy')}</div>
 
-   #{include controllers.Application.postTagName(post) /}
+   #{include post.tagName() /}
 </div>
 
 #{disqus /}

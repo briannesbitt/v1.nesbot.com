@@ -17,11 +17,11 @@
    #{list posts, as:'post'}
    <item>
       <title>${post.title}</title>
-      <link>${urlbase}${post.date.format("yyyy")}/${post.date.format("M")}/${post.date.format("d")}/${post.slug}</link>
+      <link>${urlbase}${post.url()}</link>
       <author>brian@nesbot.com (Brian Nesbitt)</author>
       <pubDate>${post.date.format("EEE, dd MMM yyyy 09:mm:ss Z")}</pubDate>
-      <guid>${urlbase}${post.date.format("yyyy")}/${post.date.format("M")}/${post.date.format("d")}/${post.slug}</guid>
-      <description><![CDATA[#{include controllers.Application.postTagName(post) /}]]></description>
+      <guid>${urlbase}${post.url()}</guid>
+      <description><![CDATA[#{include post.tagName() /}]]></description>
    </item>
    #{/list}
 </channel>

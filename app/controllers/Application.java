@@ -1,15 +1,12 @@
 package controllers;
 
+import ext.PostExtensions;
 import models.Post;
 
 import java.util.Collection;
 
 public class Application extends BaseController
 {
-   private static String postTagName(Post post)
-   {
-      return "app/views/tags/posts/" + post.slug + ".html";
-   }
    public static void index()
    {
       Collection<Post> posts = Post.findAll();
@@ -24,9 +21,9 @@ public class Application extends BaseController
          notFound(slug);
       }
 
-      if (!templateExists(postTagName(post)))
+      if (!templateExists(PostExtensions.tagName(post)))
       {
-         notFound("template for : " + postTagName(post));
+         notFound("template for : " + PostExtensions.tagName(post));
       }
 
       render(post);
