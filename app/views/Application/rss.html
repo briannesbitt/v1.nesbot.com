@@ -16,11 +16,11 @@
    #{list posts, as:'post'}
    <item>
       <title><![CDATA[${post.title}]]></title>
-      <link><![CDATA[@@{Application.show(post.date.format("yyyy"), post.date.format("MM"), post.date.format("d"), post.slug)}]]></link>
-      <description><![CDATA[#{include controllers.Application.postTagName(post) /}]]></description>
+      <link><![CDATA[@@{Application.show(post.date.format("yyyy"), post.date.format("MMM"), post.date.format("d"), post.slug)}]]></link>
       <author><![CDATA[brian@nesbot.com]]></author>
-      <pubDate><![CDATA[${post.date.format("EEE, d MMM yyyy 9:mm:ss Z")}]]></pubDate>
+      <pubDate>${post.date.format("EEE, dd MMM yyyy 09:mm:ss Z")}</pubDate>
       <guid><![CDATA[@@{Application.show(post.date.format("yyyy"), post.date.format("MM"), post.date.format("d"), post.slug)}]]></guid>
+      <description><![CDATA[#{include controllers.Application.postTagName(post) /}]]></description>
    </item>
    #{/list}
 </channel>
