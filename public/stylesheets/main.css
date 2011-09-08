@@ -1,5 +1,5 @@
 * {margin:0; padding:0;}
-body {background:#fff; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#555; position:relative;}
+body {background:#fff; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#333; position:relative;}
 
 img {border:none;}
 ul {list-style-type:none;}
@@ -19,14 +19,14 @@ a:hover {text-decoration:underline;}
 #header h1 a span {color:#999;}
 #header h2 {font-weight: bold; font-style:italic; font-size: 1.1em; color:#FF3000; position:relative; top:-5px; left: 5px;letter-spacing:1px;}
 
-#icons {position:absolute;top:28px;left:740px;}
-#icons img {padding-left:5px;}
+#twitter {position:absolute;top:28px;left:720px;width:150px;overflow:hidden;}
+#rss {position:absolute;top:28px;left:875px;width:25px;overflow:hidden;}
 
 /* Page */
 #page {line-height:180%;}
 
 /* menu */
-#menu {float:left; margin-left:25px; width:220px; color:#999;}
+#menu {float:left; margin-left:25px; width:220px; color:#999;padding-top:5px;}
 #menu h2 {text-align:right; color:#FF3000; font-size:1.8em; padding-bottom:10px;}
 #menu a {border:none; color:#A19D9A;}
 #menu a:hover {text-decoration:underline; color:#1B75A9;}
@@ -46,11 +46,14 @@ a:hover {text-decoration:underline;}
 
 
 /* Content */
-#content {margin-left:290px; width:70%;}
+#content {margin-left:290px; padding-right:50px;}
+
+#content code {background-color:#f3f3f3;border: 1px solid #ddd;border-radius: 4px 4px 4px 4px;font-family: consolas,'courier new';font-size: 0.95em;padding: 2px;}
+.syntaxhighlighter {padding-bottom:10px;}
 
 /* Post */
 .post {margin-bottom:30px; border-bottom:1px dotted #E7E2DC;}
-.post h1 {color:#1B75A9; line-height:normal; font-weight:bold; font-size:2em; text-decoration:underline;}
-.post .date {font-size:1em; font-style:italic; padding-bottom:20px;}
+.post h1 {color:#1B75A9; line-height:normal; font-size:1.7em;font-weight:bold;text-decoration:none;}
+.post .date {font-size:1em; font-style:italic; padding-bottom:20px;color:#555;}
 .post h2 {line-height:normal; padding-bottom:20px; font-size:1.5em; font-weight:bold; color: #888;}
-.post p {padding-bottom:20px; font-size:1.2em;}
+.post p {padding-bottom:15px; font-size:1.2em;}

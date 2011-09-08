@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0">
+<channel>
+   <title><![CDATA[Brian Nesbitt's  Blog]]></title>
+   <link><![CDATA[http://nesbot.com]]></link>
+   <description><![CDATA[Developer who is always consuming knowledge. Startup enthusiast who doesn't enjoy being a drop in a bucket. Dividend stock investor. Lucky husband and father.]]></description>
+   <language>en-us</language>
+   <managingEditor><![CDATA[brian@nesbot.com]]></managingEditor>
+   <image>
+	   <url>http://nesbot.com/images/logo.gif</url>
+	   <title><![CDATA[Brian Nesbitt's  Blog]]></title>
+	   <link><![CDATA[http://nesbot.com]]></link>
+   </image>
+
+   #{list posts, as:'post'}
+   <item>
+      <title><![CDATA[${post.title}]]></title>
+      <link><![CDATA[@@{Application.show(post.date.format("yyyy"), post.date.format("MM"), post.date.format("d"), post.slug)}]]></link>
+      <description><![CDATA[#{include controllers.Application.postTagName(post) /}]]></description>
+      <author><![CDATA[brian@nesbot.com]]></author>
+      <pubDate><![CDATA[${post.date.format("EEE, d MMM yyyy 9:mm:ss Z")}]]></pubDate>
+      <guid><![CDATA[@@{Application.show(post.date.format("yyyy"), post.date.format("MM"), post.date.format("d"), post.slug)}]]></guid>
+   </item>
+   #{/list}
+</channel>
+</rss>

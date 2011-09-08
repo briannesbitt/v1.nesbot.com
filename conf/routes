@@ -3,12 +3,18 @@
 # ~~~~
 
 # Home page
-GET     /                                       Application.index
+GET     /                                                                  Application.index
+
+GET     /{<[0-9]{4}>year}/{<[0-9]{1,2}>month}/{<[0-9]{1,2}>day}/{slug}/?   Application.show
+
+GET     /rss                                                               Application.rss
+GET     /rss/{subject}                                                     Application.rss
 
 # Map static resources from the /app/public folder to the /public path
-GET     /images/                                staticDir:public/images
-GET     /css/                                   staticDir:public/stylesheets
-GET     /public/                                staticDir:public
+GET     /images/                                                           staticDir:public/images
+GET     /css/                                                              staticDir:public/stylesheets
+GET     /js/                                                               staticDir:public/javascripts
+GET     /public/                                                           staticDir:public
 
 # Catch all
-*       /{controller}/{action}                  {controller}.{action}
+*       /{controller}/{action}                                             {controller}.{action}

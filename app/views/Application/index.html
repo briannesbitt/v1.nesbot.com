@@ -1,1 +1,8 @@
 #{extends 'template.html' /}
+
+#{list posts, as:'post'}
+   <div class="post">
+      <h1><a href="/${post.date.format('yyyy')}/${post.date.format('M')}/${post.date.format('d')}/${post.slug}">${post.title}</a></h1>
+      <p class="date">${post.date.format('MMMM d, yyyy')}</p>
+   </div>
+#{/list}

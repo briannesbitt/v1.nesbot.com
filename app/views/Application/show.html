@@ -1,0 +1,12 @@
+#{set title: post.title /}
+#{extends 'template.html' /}
+
+<div class="post">
+
+   <h1>${post.title}</h1>
+   <div class="date">${post.date.format('MMMM d, yyyy')}</div>
+
+   #{include controllers.Application.postTagName(post) /}
+</div>
+
+#{disqus /}
