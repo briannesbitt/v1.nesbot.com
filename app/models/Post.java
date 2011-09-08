@@ -1,6 +1,5 @@
 package models;
 
-import org.joda.time.DateTime;
 import java.util.*;
 
 public class Post
@@ -22,9 +21,9 @@ public class Post
    {
       return posts.containsKey(slug) ? posts.get(slug) : null;
    }
-   public static Collection<Post> findAll()
+   public static List<Post> findAll()
    {
-      return posts.values();
+      return new ArrayList<Post>(posts.values());
    }
 
    public void save()

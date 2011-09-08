@@ -1,4 +1,5 @@
 package jobs;
+
 import models.Post;
 import org.joda.time.DateTime;
 import play.jobs.Job;

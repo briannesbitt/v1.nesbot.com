@@ -2,7 +2,6 @@ package test.functional;
 
 import controllers.Application;
 import helpers.Globals;
-import jobs.Startup;
 import models.Post;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,9 +15,18 @@ public class ApplicationTest extends BaseFunctionalTest
    private static Post post2;
    private static Post post3;
 
+   private static void deleteAllPosts()
+   {
+      for (Post post : Post.findAll())
+      {
+         post.delete();
+      }
+   }
+
    @Before
    public void addPost()
    {
+      deleteAllPosts();
       post1 = new Post("my title", "myslug", new Date());
       post1.save();
       post2 = new Post("my title 2", "myslug 2", new Date());
@@ -76,7 +84,10 @@ public class ApplicationTest extends BaseFunctionalTest
    @Test
    public void testRss()
    {
-      wt.beginAt(getRoute("Appplication.rss"));
+      deleteAllPosts();
+      post3.save();
+
+      wt.beginAt("/rss");
       assertEquals("application/rss+xml", wt.getHeader("Content-type"));
       wt.assertTextPresent("Brian Nesbitt's  Blog");
       wt.assertTextPresent(post3.title);
