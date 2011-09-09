@@ -17,10 +17,10 @@
    #{list posts, as:'post'}
    <item>
       <title>${post.title}</title>
-      <link>${urlbase}${post.url()}</link>
+      <link>${urlbase.substring(0,urlbase.length()-1)}${post.url()}</link>
       <author>brian@nesbot.com (Brian Nesbitt)</author>
       <pubDate>${post.date.format("EEE, dd MMM yyyy 09:mm:ss Z")}</pubDate>
-      <guid>${urlbase}${post.url()}</guid>
+      <guid>${urlbase.substring(0,urlbase.length()-1)}${post.url()}</guid>
       <description><![CDATA[#{include post.tagName() /}]]></description>
    </item>
    #{/list}
