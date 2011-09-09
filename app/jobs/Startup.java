@@ -15,7 +15,11 @@ public class Startup extends Job
       play.Logger.info("Populating posts - start");
 
       /******* Move all of this to MongoDB soon *******/
-      new Post("Adding initial windows support for the Play! Framework 2.0 preview",
+      new Post("ANSI colour support in Windows for the Play! Framework 2.0 preview",
+               "ansi-colour-support-for-play-framework-2-preview",
+               new Date(new DateTime(2011, 9, 9, 0, 0, 0, 0).getMillis())).save();
+
+      new Post("Adding initial Windows support for the Play! Framework 2.0 preview",
                "windows-support-for-play-framework-2-preview",
                new Date(new DateTime(2011, 9, 8, 0, 0, 0, 0).getMillis())).save();
 

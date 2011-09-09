@@ -15,6 +15,7 @@ GET     /images/                                                           stati
 GET     /css/                                                              staticDir:public/stylesheets
 GET     /js/                                                               staticDir:public/javascripts
 GET     /public/                                                           staticDir:public
+GET     /downloads/                                                        staticDir:public/downloads
 
 # Catch all
 *       /{controller}/{action}                                             {controller}.{action}

@@ -1,3 +1,4 @@
+%{relatedPost = models.Post.findBySlug("ansi-colour-support-for-play-framework-2-preview") }%
 <p>As many of you saw the Play framework team released their plans on the upcoming <a href="http://www.playframework.org/2.0">2.0 release</a>.  I tried it out on a remote linux machine and it worked as expected.  My desktop runs Windows though and the current preview package doesn't work on Windows yet, but its a pretty simple task to get it up and running for now until official support is added.</p>
 
 <p>Download the <a href="http://download.playframework.org/releases/play-2.0-preview.zip">preview package</a> and unzip to <code>c:\</code> (or a directory you prefer, but the rest of the post will assume <code>c:\</code>) so you now have a <code>c:\play-2.0</code> directory.</p>
@@ -33,3 +34,5 @@ c:\play-2.0\play.bat    #shows some [info] logs and then runs the console
 <p>Looks like this means I now have to start looking into <a href="http://www.scala-lang.org/">Scala</a> some more.</p>
 
 <p>Congrats to the Play! team and also to the community as we get to reap the benefits of their hard work!</p>
+
+<p><b>UPDATE:</b> to fix the ANSI control characters in the play output see <a href="${relatedPost.url()}">${relatedPost.title}</a></p>
