@@ -1,5 +1,5 @@
 %{relatedPost = models.Post.findBySlug("windows-support-for-play-framework-2-preview") }%
-<p><i>This is an update to the first post, <a href="${relatedPost.url()}">${relatedPost.title}</a>, please read and follow that post first before continuing on.</i></p>
+<p><i>This is an update to the first post, <a href="${relatedPost.fullUrl()}">${relatedPost.title}</a>, please read and follow that post first before continuing on.</i></p>
 
 <p>As pointed out today the Windows version outputs various ANSI color codes rather than changing the color of the text.  There aren't many so they don't really get in the way, we just don't get color.</p>
 
@@ -17,7 +17,7 @@
 
 <p>Now for Ansicon.  They provide seperate binaries for 32 and 64 bit.</p>
 
-<p>Download <a href="/downloads/playAnsicon.zip">playAnsicon.zip</a> and unzip it to <code>c:\play-2.0</code>.  This should give you the following directories <code>c:\play-2.0\ansicon\x86</code> and <code>c:\play-2.0\ansicon\x64</code> each with some dll's and their respective <code>ansicon.exe</code>.</p>
+<p>Download <a href="@@{'/public/downloads/playAnsicon.zip'}">playAnsicon.zip</a> and unzip it to <code>c:\play-2.0</code>.  This should give you the following directories <code>c:\play-2.0\ansicon\x86</code> and <code>c:\play-2.0\ansicon\x64</code> each with some dll's and their respective <code>ansicon.exe</code>.</p>
 
 <p>That should be it.  Now when you run the <code>play.bat</code> script you should see some glorious <span style="color:blue">c</span><span style="color:red">o</span><span style="color:green">l</span><span style="color:red">o</span><span style="color:blue">u</span><span style="color:green">r</span>!</p>
 

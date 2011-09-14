@@ -42,9 +42,7 @@ public class ApplicationTest extends BaseFunctionalTest
    @Test
    public void testStaticPrivateCtors()
    {
-      assertPrivateNoArgsCtor(Globals.class);
       assertPrivateNoArgsCtor(Application.class);
-      assertPrivateNoArgsCtor(PostExtensions.class);
    }
    @Test
    public void testHomeIndexPage()
@@ -106,6 +104,6 @@ public class ApplicationTest extends BaseFunctionalTest
       assertEquals("application/rss+xml", wt.getHeader("Content-type"));
       wt.assertTextPresent("Brian Nesbitt's  Blog");
       wt.assertTextPresent(post3.title);
-      wt.assertTextPresent("/1975/5/21/" + post3.slug + "</link>");
+      wt.assertTextPresent(Globals.getUrlBaseNoSlash() + "/1975/5/21/" + post3.slug + "</link>");
    }
 }

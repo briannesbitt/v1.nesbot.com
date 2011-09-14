@@ -1,10 +1,12 @@
 package test.unit;
 
+import ext.PostExtensions;
 import models.Post;
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 import play.test.UnitTest;
+import test.functional.BaseFunctionalTest;
 
 import java.util.Date;
 

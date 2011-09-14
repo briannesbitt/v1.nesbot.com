@@ -4,17 +4,37 @@ import play.Play;
 
 public class Globals
 {
-   public static String getUrlBase()
+   private static String getUrlBase()
    {
       return Play.configuration.getProperty("application.baseUrl");
    }
-   public static String getUrlCdn()
+   public static String getUrlBaseWithSlash()
+   {
+      String urlbase = getUrlBase();
+      return urlbase.endsWith("/") ? urlbase : urlbase + "/";
+   }
+   public static String getUrlBaseNoSlash()
+   {
+      String urlbase = getUrlBase();
+      return urlbase.endsWith("/") ? urlbase.substring(0, urlbase.length() - 1) : urlbase;
+   }
+   private static String getUrlCdn()
    {
       return Play.configuration.getProperty("urlcdn");
    }
-   public static String getUrlImages()
+   public static String getUrlCdnWithSlash()
    {
-      return Globals.getUrlCdn() + "images/";
+      String urlcdn = getUrlCdn();
+      return urlcdn.endsWith("/") ? urlcdn : urlcdn + "/";
+   }
+   public static String getUrlCdnNoSlash()
+   {
+      String urlcdn = getUrlCdn();
+      return urlcdn.endsWith("/") ? urlcdn.substring(0, urlcdn.length() - 1) : urlcdn;
+   }
+   public static String getUrlImagesWithSlash()
+   {
+      return getUrlCdnWithSlash() + "images/";
    }
    public static String getGoogleAnalyticsTracker()
    {

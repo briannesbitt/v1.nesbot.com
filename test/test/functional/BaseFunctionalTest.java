@@ -25,14 +25,14 @@ public abstract class BaseFunctionalTest extends FunctionalTest
       {
          ((HtmlUnitTestingEngineImpl)wt.getTestingEngine()).setDefaultBrowserVersion(defaultBrowserVersion);
       }
-      wt.setBaseUrl(Globals.getUrlBase());
+      wt.setBaseUrl(Globals.getUrlBaseWithSlash());
       wt.getTestingEngine().setIgnoreFailingStatusCodes(false);
    }
    protected String getRoute(String action)
    {
       return Router.reverse(action).url;
    }
-   protected void assertPrivateNoArgsCtor(final Class<?> cls)
+   public static void assertPrivateNoArgsCtor(final Class<?> cls)
    {
       final Constructor<?> c = cls.getDeclaredConstructors()[0];
       c.setAccessible(true);

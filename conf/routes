@@ -14,8 +14,9 @@ GET     /rss/{subject}                                                     Appli
 GET     /images/                                                           staticDir:public/images
 GET     /css/                                                              staticDir:public/stylesheets
 GET     /js/                                                               staticDir:public/javascripts
-GET     /public/                                                           staticDir:public
 GET     /downloads/                                                        staticDir:public/downloads
+
+GET     /public/                                                           staticDir:public
 
 # Catch all
 *       /{controller}/{action}                                             {controller}.{action}
