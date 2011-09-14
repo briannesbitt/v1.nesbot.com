@@ -27,10 +27,10 @@ public class ApplicationTest extends BaseFunctionalTest
    }
 
    @Before
-   public void addPost()
+   public void addPost() throws InterruptedException
    {
       deleteAllPosts();
-      post1 = new Post("my title", "myslug", new Date(new DateTime(2011, 5, 21, 0, 0, 0, 0).getMillis()));
+      post1 = new Post("my title", "ansi-colour-support-for-play-framework-2-preview", new Date(new DateTime(2011, 5, 21, 0, 0, 0, 0).getMillis()));
       post1.save();
       post2 = new Post("my title 2", "myslug 2", new Date());
       post2.save();
@@ -83,7 +83,7 @@ public class ApplicationTest extends BaseFunctionalTest
    public void testShowNoTemplate()
    {
       wt.setIgnoreFailingStatusCodes(true);
-      wt.beginAt(PostExtensions.url(post1));
+      wt.beginAt(PostExtensions.url(post2));
       wt.assertResponseCode(404);
    }
    @Test
@@ -99,6 +99,7 @@ public class ApplicationTest extends BaseFunctionalTest
    public void testRss()
    {
       deleteAllPosts();
+      post1.save();
       post3.save();
 
       wt.beginAt("/rss");
