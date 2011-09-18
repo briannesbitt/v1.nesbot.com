@@ -1,7 +1,7 @@
 package jobs;
 
+import com.nesbot.commons.datetime.Dater;
 import models.Post;
-import org.joda.time.DateTime;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 
@@ -17,15 +17,15 @@ public class Startup extends Job
       /******* Move all of this to MongoDB soon *******/
       new Post("ANSI colour support in Windows for the Play! Framework 2.0 preview",
                "ansi-colour-support-for-play-framework-2-preview",
-               new Date(new DateTime(2011, 9, 9, 0, 0, 0, 0).getMillis())).save();
+               Dater.create(2011, 9, 9).timestamp()).save();
 
       new Post("Adding initial Windows support for the Play! Framework 2.0 preview",
                "windows-support-for-play-framework-2-preview",
-               new Date(new DateTime(2011, 9, 8, 0, 0, 0, 0).getMillis())).save();
+               Dater.create(2011, 9, 8).timestamp()).save();
 
       new Post("A carpenter's house is always the last to get the attention it deserves",
                "carpenters-house-last-to-get-attention",
-               new Date(new DateTime(2011, 9, 7, 0, 0, 0, 0).getMillis())).save();
+               Dater.create(2011, 9, 7).timestamp()).save();
 
       play.Logger.info("Populating posts - done");
    }

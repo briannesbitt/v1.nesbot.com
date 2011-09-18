@@ -4,7 +4,7 @@
 <div class="post">
 
    <h1>${post.title}</h1>
-   <div class="date">${post.date.format('MMMM d, yyyy')}</div>
+   <div class="date">${post.prettyUpdated()}</div>
 
    #{include post.tagName() /}
 </div>

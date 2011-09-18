@@ -1,5 +1,6 @@
 package test.unit;
 
+import com.nesbot.commons.tests.TestHelpers;
 import helpers.Globals;
 import org.junit.Test;
 import play.Play;
@@ -23,7 +24,7 @@ public class GlobalsTest extends UnitTest
    @Test
    public void testStaticPrivateCtors()
    {
-      BaseFunctionalTest.assertPrivateNoArgsCtor(Globals.class);
+      TestHelpers.assertPrivateNoArgsCtor(Globals.class);
    }
    @Test
    public void testUrlBaseNoSlash()

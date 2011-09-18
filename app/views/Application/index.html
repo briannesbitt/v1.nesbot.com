@@ -3,6 +3,6 @@
 #{list posts, as:'post'}
    <div class="post">
       <h1><a href="${post.url()}">${post.title}</a></h1>
-      <p class="date">${post.date.format('MMMM d, yyyy')}</p>
+      <p class="date">${post.prettyUpdated()}</p>
    </div>
 #{/list}

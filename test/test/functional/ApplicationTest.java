@@ -1,15 +1,18 @@
 package test.functional;
 
+import com.nesbot.commons.datetime.Dater;
+import com.nesbot.commons.datetime.Now;
+import com.nesbot.commons.tests.TestHelpers;
 import controllers.Application;
 import ext.PostExtensions;
 import helpers.Globals;
 import models.Post;
 import net.sourceforge.jwebunit.api.IElement;
-import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 import play.templates.JavaExtensions;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ApplicationTest extends BaseFunctionalTest
@@ -18,31 +21,23 @@ public class ApplicationTest extends BaseFunctionalTest
    private static Post post2;
    private static Post post3;
 
-   private static void deleteAllPosts()
-   {
-      for (Post post : Post.findAll())
-      {
-         post.delete();
-      }
-   }
-
    @Before
-   public void addPost() throws InterruptedException
+   public void refreshPosts() throws InterruptedException
    {
-      deleteAllPosts();
-      post1 = new Post("my title", "ansi-colour-support-for-play-framework-2-preview", new Date(new DateTime(2011, 5, 21, 0, 0, 0, 0).getMillis()));
+      Post.clear();
+      post1 = new Post("my title", "ansi-colour-support-for-play-framework-2-preview", Dater.create(2011, 5, 21).timestamp());
       post1.save();
-      post2 = new Post("my title 2", "myslug 2", new Date());
+      post2 = new Post("my title 2", "myslug 2", Now.timestamp());
       post2.save();
       post3 = new Post("Adding initial windows support for the Play! Framework 2.0 preview",
                "windows-support-for-play-framework-2-preview",
-               new Date(new DateTime(1975, 5, 21, 0, 0, 0, 0).getMillis()));
+               Dater.create(1975, 5, 21).timestamp());
       post3.save();
    }
    @Test
    public void testStaticPrivateCtors()
    {
-      assertPrivateNoArgsCtor(Application.class);
+      TestHelpers.assertPrivateNoArgsCtor(Application.class);
    }
    @Test
    public void testHomeIndexPage()
@@ -57,7 +52,7 @@ public class ApplicationTest extends BaseFunctionalTest
       IElement e = wt.getElementByXPath("//a[@href='/2011/5/21/" + post1.slug + "']");
       assertEquals(post1.title, e.getTextContent());
 
-      e = wt.getElementByXPath("//a[@href='" + JavaExtensions.format(post2.date, "/yyyy/M/d/") + post2.slug + "']");
+      e = wt.getElementByXPath("//a[@href='" + Dater.create(post2.updated).toString("/yyyy/M/d/") + post2.slug + "']");
       assertEquals(post2.title, e.getTextContent());
 
       e = wt.getElementByXPath("//a[@href='/1975/5/21/" + post3.slug + "']");
@@ -96,7 +91,7 @@ public class ApplicationTest extends BaseFunctionalTest
    @Test
    public void testRss()
    {
-      deleteAllPosts();
+      Post.clear();
       post1.save();
       post3.save();
 

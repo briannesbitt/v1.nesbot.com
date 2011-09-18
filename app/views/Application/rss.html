@@ -19,7 +19,7 @@
       <title>${post.title}</title>
       <link>${post.fullUrl()}</link>
       <author>brian@nesbot.com (Brian Nesbitt)</author>
-      <pubDate>${post.date.format("EEE, dd MMM yyyy 09:mm:ss Z")}</pubDate>
+      <pubDate>${post.toRFC822()}</pubDate>
       <guid>${post.fullUrl()}</guid>
       <description><![CDATA[#{include post.tagName() /}]]></description>
    </item>

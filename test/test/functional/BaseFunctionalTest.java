@@ -8,9 +8,6 @@ import org.junit.Before;
 import play.mvc.Router;
 import play.test.FunctionalTest;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
 public abstract class BaseFunctionalTest extends FunctionalTest
 {
    protected WebTester wt;
@@ -23,7 +20,7 @@ public abstract class BaseFunctionalTest extends FunctionalTest
       wt.getTestContext().setUserAgent(defaultBrowserVersion.getUserAgent());
       if (wt.getTestingEngine() instanceof HtmlUnitTestingEngineImpl)
       {
-         ((HtmlUnitTestingEngineImpl)wt.getTestingEngine()).setDefaultBrowserVersion(defaultBrowserVersion);
+         ((HtmlUnitTestingEngineImpl) wt.getTestingEngine()).setDefaultBrowserVersion(defaultBrowserVersion);
       }
       wt.setBaseUrl(Globals.getUrlBaseWithSlash());
       wt.getTestingEngine().setIgnoreFailingStatusCodes(false);
@@ -31,28 +28,5 @@ public abstract class BaseFunctionalTest extends FunctionalTest
    protected String getRoute(String action)
    {
       return Router.reverse(action).url;
-   }
-   public static void assertPrivateNoArgsCtor(final Class<?> cls)
-   {
-      final Constructor<?> c = cls.getDeclaredConstructors()[0];
-      c.setAccessible(true);
-
-      try
-      {
-         final Object n = c.newInstance((Object[]) null);
-         assertNotNull(n);
-      }
-      catch (InstantiationException ex)
-      {
-         fail(ex.getMessage());
-      }
-      catch (IllegalAccessException ex)
-      {
-         fail(ex.getMessage());
-      }
-      catch (InvocationTargetException ex)
-      {
-         fail(ex.getMessage());
-      }
    }
 }
