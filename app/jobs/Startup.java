@@ -15,6 +15,10 @@ public class Startup extends Job
       play.Logger.info("Populating posts - start");
 
       /******* Move all of this to MongoDB soon *******/
+      new Post("Using the Cobertura module with the Play Framework",
+               "cobertura-module-with-the-play-framework",
+               Dater.create(2011, 9, 19).timestamp()).save();
+
       new Post("ANSI colour support in Windows for the Play! Framework 2.0 preview",
                "ansi-colour-support-for-play-framework-2-preview",
                Dater.create(2011, 9, 9).timestamp()).save();
