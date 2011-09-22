@@ -18,8 +18,8 @@ public class Startup extends Job
 
       Post.clear();
 
-      new Post("I will be changing to a standing desk",
-               "i-will-be-changing-to-a-standing-desk",
+      new Post("Why and How I will switch to a stand-up desk",
+               "why-and-how-i-will-switch-to-a-stand-up-desk",
                Dater.create(2011, 9, 22).timestamp()).save();
 
       new Post("Tricks for using the cobertura module with the Play Framework",
