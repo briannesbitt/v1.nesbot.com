@@ -11,4 +11,11 @@
    #{share uTag:'Bottom',urlimages:urlimages,title:post.title,url:post.fullUrl() /}
 </div>
 
+<div id="post-nav">
+   <span>#{if older}<a href="${older.url()}"><- ${older.title}</a>#{/if}&nbsp;</span>
+   <span><a href="@{Application.index}">Home</a></span>
+   <span>#{if newer}<a href="${newer.url()}">${newer.title} -></a>#{/if}&nbsp;</span>
+   <div class="c"></div>
+</div>
+
 #{disqus /}

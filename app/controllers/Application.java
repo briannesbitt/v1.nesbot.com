@@ -26,7 +26,10 @@ public class Application extends BaseController
          notFound("template for : " + PostExtensions.tagName(post));
       }
 
-      render(post);
+      Post older = post.next();
+      Post newer = post.previous();
+
+      render(post, older, newer);
    }
    public static void rss(String subject)
    {
