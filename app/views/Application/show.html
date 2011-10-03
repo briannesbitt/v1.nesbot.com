@@ -6,7 +6,9 @@
    <h1>${post.title}</h1>
    <div class="date">${post.prettyUpdated()}</div>
 
+   #{share urlimages:urlimages,title:post.title,url:post.fullUrl() /}
    #{include post.tagName() /}
+   #{share urlimages:urlimages,title:post.title,url:post.fullUrl() /}
 </div>
 
 #{disqus /}
