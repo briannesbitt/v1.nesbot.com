@@ -11,10 +11,6 @@
        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
      })();
 
-     function gaTrackEvent(category, action)
-     {
-        _gat._getTrackerByName()._trackEvent(category, action);
-     }
    </script>
 #{/if}
 #{else}
@@ -22,3 +18,13 @@
 	var gaEnabled = false;
 	</script>
 #{/else}
+
+<script type="text/javascript">
+function gaTrackEvent(category, action)
+{
+   if (gaEnabled)
+   {
+      _gat._getTrackerByName()._trackEvent(category, action);
+   }
+}
+</script>

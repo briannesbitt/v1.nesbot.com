@@ -16,12 +16,4 @@ $(document).ready(function()
    $("#share-hn-${uid}").click( function() {gaTrackEvent("SocialLinks", "HackerNews${uid}"); } );
    $("#share-dz-${uid}").click( function() {gaTrackEvent("SocialLinks", "DZone${uid}"); } );
 });
-
-function gaTrackEvent(category, action)
-{
-   if (gaEnabled)
-   {
-      _gat._getTrackerByName()._trackEvent(category, action);
-   }
-}
 </script>

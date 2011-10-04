@@ -18,6 +18,10 @@ public class Startup extends Job
 
       Post.clear();
 
+      new Post("Day 1 of my move to a stand-up desk",
+               "day-1-of-my-move-to-a-stand-up-desk",
+               Dater.create(2011, 10, 3).timestamp()).save();
+
       new Post("Why and How I will switch to a stand-up desk",
                "why-and-how-i-will-switch-to-a-stand-up-desk",
                Dater.create(2011, 9, 22).timestamp()).save();
