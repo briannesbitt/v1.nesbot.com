@@ -54,11 +54,10 @@ a:hover {text-decoration:underline;}
 /* Post */
 .post {margin-bottom:15px;}
 .post h1 {color:#1B75A9; line-height:normal; font-size:1.7em;font-weight:bold;text-decoration:none;}
-.post .date {font-size:1em; font-style:italic; padding-bottom:20px;color:#555;}
+.post .date {font-size:1em; font-style:italic; padding-bottom:15px;color:#555;}
 .post h2 {line-height:normal; padding-bottom:20px; font-size:1.3em; font-weight:bold; color: #333;}
 .post p {padding-bottom:15px; font-size:1.2em;}
 .post p.quote {font-style:italic;padding-left:60px;padding-right:80px}
-.post .share {padding-bottom:0}
 
 #post-nav {padding-bottom:20px;margin-bottom:20px;border-bottom:1px dotted #E7E2DC;line-height:110%}
 #post-nav span:first-child {float:left;width:33%;}
