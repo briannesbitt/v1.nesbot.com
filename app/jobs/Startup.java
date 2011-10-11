@@ -18,6 +18,10 @@ public class Startup extends Job
 
       Post.clear();
 
+      new Post("How much code do you read?",
+               "how-much-code-do-you-read",
+               Dater.create(2011, 10, 11).timestamp()).save();
+
       new Post("Day 1 of my move to a stand-up desk",
                "day-1-of-my-move-to-a-stand-up-desk",
                Dater.create(2011, 10, 3).timestamp()).save();
