@@ -18,6 +18,10 @@ public class Startup extends Job
 
       Post.clear();
 
+      new Post("Play framework sample application with JWebUnit and synchronous ajax",
+               "play-framework-sample-app-JWebUnit-synchronous-ajax",
+               Dater.create(2011, 10, 15).timestamp()).save();
+
       new Post("How much code do you read?",
                "how-much-code-do-you-read",
                Dater.create(2011, 10, 11).timestamp()).save();

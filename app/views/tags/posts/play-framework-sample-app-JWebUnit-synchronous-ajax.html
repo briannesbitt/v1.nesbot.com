@@ -1,0 +1,80 @@
+<p>I had posted awhile ago on the play framework google group that I had successfully started using <a href="http://jwebunit.sourceforge.net/">JWebUnit</a> for testing rather than the included <a href="http://seleniumhq.org/">selenium</a>.  At the time it was partly because the IDE autocomplete support for the test helper functions in JWebUnit were way more convenient compared to learning the selenium commands and that its completely headless, although Play 1.2 had already fixed that.  That post recently had another user trying to get an ajax test working but was running into a timing issue.  Before you can assert the result of the ajax call you need to wait for the call to be completed.  By default, the ajax calls are performed asynchronously, so you don't have much choice but to call <code>Thread.sleep(X)</code> and hope you select an appropriate value for X.  This type of test is pretty fragile in my mind and in the future could possibly break and raise some false negatives about the underlying functionality.</p>
+
+<p>Sure enough there was a solution already in place.  Setting up and instance of <code>NicelyResynchronizingAjaxController</code> as the testing engine ajax controller makes the ajax call synchronous and removes the dependency on the <code>Thread.sleep(x)</code> call.  I reposted this and that user was then off to "write tons of code lines".</p>
+
+<p>Another user shortly after requested if someone could share a sample application showing how to make it all work together as our messages had bits and pieces of code here and there. So I am about to share a sample and explain the tests a little.  I won't go into much detail into the rest of the sample (its pretty simple) but you can always ask more if needed in the comments/email/twitter/google group and I'll try to help.</p>
+
+<p>Here is the <a href="https://groups.google.com/d/topic/play-framework/ut9DQ1numsA/discussion">google group thread</a>.</p>
+
+<h2>Stupid simple events sample application</h2>
+
+<p>The application is very simple and only has 1 page.  It allows a user to create a new Event (id,title) and uses ajax to submit that to the server.  A notification result (OK,ERROR) is displayed for the user.  The full list of existing events is listed at the bottom in a simple &lt;ul&gt; list.  The application uses the bundled in-memory database H2 so there really isn't anything to setup or configure.  The json responses from the server are in the following form:</p>
+
+<pre class="brush: java">
+{ "status": "OK", "msg": "some message" }
+{ "status": "ERROR", "msg": "some message" }
+</pre>
+
+<h2>Try it out, its on github</h2>
+
+<pre class="brush: bash">
+git clone git://github.com/briannesbitt/PlaySampleWithJWebUnitWithAjax.git
+play autotest
+</pre>
+
+<p>You can also run <code>play test</code> and then browse to <code>http://127.0.0.1:9000</code> to try it or <code>http://127.0.0.1:9000/@tests</code> to run the tests manually.</p>
+
+<h2>Lets look at the tests</h2>
+
+<p>I have a <code>BaseFunctionalTest</code> that extends the Play framework <code>FunctionalTest</code>.  This sets up the <code>protected WebTester wt</code> and initializes the base url with <code>setBaseUrl</code>.  Its pretty straightforward.</p>
+
+<pre class="brush: java">
+protected WebTester wt;
+protected BrowserVersion defaultBrowserVersion = BrowserVersion.INTERNET_EXPLORER_8;
+
+@Before
+public void before()
+{
+   wt = new WebTester();
+   wt.getTestContext().setUserAgent(defaultBrowserVersion.getUserAgent());
+   if (wt.getTestingEngine() instanceof HtmlUnitTestingEngineImpl)
+   {
+      ((HtmlUnitTestingEngineImpl) wt.getTestingEngine()).setDefaultBrowserVersion(defaultBrowserVersion);
+   }
+   Router.ActionDefinition baseUrl = Router.reverse("Application.index");
+   baseUrl.absolute();
+   wt.setBaseUrl(baseUrl.url);
+   wt.getTestingEngine().setIgnoreFailingStatusCodes(false);
+}
+protected String getRoute(String action)
+{
+   return Router.reverse(action).url;
+}
+</pre>
+
+<p>There are 4 simple tests in the <code>test\ApplicationTest.java</code> file.</p>
+
+<pre class="brush: java">
+@Test
+public void testIndex()
+{
+   wt.beginAt(getRoute("Application.index"));
+   wt.assertElementPresent("createEvent");
+   wt.assertTextInElement("error", "");
+   wt.assertTextInElement("success", "");
+   wt.assertTextInElement("events", "");
+}
+</pre>
+
+<p>The first test <code>testIndex()</code> is a simple test to ensure the index "/" page gets rendered properly and just checks a few html elements on the page.</p>
+
+<p>The second test <code>testAddEventBlankTitle()</code> tries to submit the form using ajax but with no title value.  We want to check the <code>&lt;div id="error"&gt;</code> for the error message, but we have to wait for a length of time to allow the ajax call to complete.  I choose 2 seconds since that "seemed" like a reasonable amout of time.</p>
+
+<p>The third test <code>testAddEventAjaxAsync()</code> successfully submits a new Event via ajax.  Again we need to <code>Thread.sleep(2000)</code> to wait for the ajax call to return so we can assert the <code>&lt;div id="success"&gt;</code> has some success nofication text.</p>
+
+<p>The final test <code>testAddEventAjaxSync()</code> successfully submits a new Event via ajax, but this time we have setup an instance of <code>NicelyResynchronizingAjaxController</code> as the testing engine ajax controller.  This make the ajax call synchronous.  This allows us to avoid the unknown length of <code>Thread.sleep()</code> time and  we can continue our test ensuring that the <code>&lt;div id="success"&gt;</code> gets populated correctly and infact there is a new Event in the db.</p>
+
+
+<h2>%test.play.pool=2</h2>
+
+<p>Also just thought I would mention this since it took me a moment to realize what was happening when I first started.  When you run play in dev or test mode it by default only creates the server execution pool with 1 thread.  When I ran my first JWebUnit functional test it worked when testing the http://htmlunit.sourceforge.net homepage but failed (read hung forever) when I started using http://127.0.0.1:9000.  I realized that the 1 executor thread was responding to my test run and could not respond to the test call back to itself.  Adding the line <code>%test.play.pool=2</code> to the <code>application.conf</code> was the easy solution.</p>
