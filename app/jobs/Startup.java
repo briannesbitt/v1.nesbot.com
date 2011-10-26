@@ -18,6 +18,10 @@ public class Startup extends Job
 
       Post.clear();
 
+      new Post("My Father Son relationship: a speech to my Dad on his 70th birthday",
+               "my-father-son-relationship",
+               Dater.create(2011, 10, 25).timestamp()).save();
+
       new Post("Play framework sample application with JWebUnit and synchronous ajax",
                "play-framework-sample-app-JWebUnit-synchronous-ajax",
                Dater.create(2011, 10, 16).timestamp()).save();
