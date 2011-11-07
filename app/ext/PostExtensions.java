@@ -7,9 +7,10 @@ import play.templates.JavaExtensions;
 
 public class PostExtensions extends JavaExtensions
 {
+   public static final String postsPath = "app/views/tags/posts/";
    public static String tagName(Post post)
    {
-      return "app/views/tags/posts/" + post.slug + ".html";
+      return postsPath + Dater.create(post.updated).toString("yyyy-M-d-") + post.slug + ".html";
    }
    public static String url(Post post)
    {

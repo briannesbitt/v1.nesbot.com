@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import play.test.UnitTest;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,7 +20,7 @@ public class PostExtensionsTest extends UnitTest
    private Post _post;
 
    @Before
-   public void runStartupAndGetFirstPost()
+   public void runStartupAndGetFirstPost() throws IOException
    {
       Post.clear();
       new Startup().doJob();
@@ -33,7 +34,9 @@ public class PostExtensionsTest extends UnitTest
    @Test
    public void testTagName()
    {
-      assertEquals("app/views/tags/posts/" + _post.slug + ".html", PostExtensions.tagName(_post));
+      Dater dater = Dater.create(2010, 8, 6);
+      _post.updated = dater.timestamp();
+      assertEquals("app/views/tags/posts/2010-8-6-" + _post.slug + ".html", PostExtensions.tagName(_post));
    }
    @Test
    public void testUrl()
