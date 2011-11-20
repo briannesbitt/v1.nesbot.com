@@ -1,3 +1,5 @@
 h1. nesbot.com
 
+*This site is no longer maintained.  The final version here is built on Play framework v1.2.3.  I have ported this blog to the BETA release of Play 2.0.  The old version can still be seen here: "http://github.com/briannesbitt/nesbot.com":http://github.com/briannesbitt/nesbot.com*
+
 I am making the source code of my personal site available publicly in case it helps anybody.  It's developed using the "playframework":http://playframework.org.  At this point it's so simple it probably won't, but hopefully it will in the not too distant future.
